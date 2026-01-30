@@ -25,18 +25,8 @@ use App\Http\Controllers\SiteUser\CollectionController;
 use App\Http\Controllers\SiteUser\ProductReviewController as SiteUserProductReviewController;
 use App\Http\Controllers\SiteUser\ProductSearchController;
 use App\Http\Controllers\SiteUser\RecommendationController;
-
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
-
-// Route::middleware(['auth:sanctum'])->group(function () {
-//     Route::get('/user', function (Request $request) {
-//         return $request->user();
-//     });
-// });
-
-Route::middleware('guest:sanctum')->group(function () {
+Route::prefix('api')->group(function () {
+  Route::middleware('guest:sanctum')->group(function () {
     Route::post('/admin/login',    [AdminAuthController::class, 'login']);
 
     Route::post('/user/register', [AuthController::class, 'register']);
@@ -162,5 +152,6 @@ Route::get('/products/search', [ProductSearchController::class, 'search']);
 
 Route::get('/test', function () {
     return response()->json(['ok' => true]);
+});  
 });
 
