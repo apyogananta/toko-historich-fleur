@@ -159,3 +159,8 @@ Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkE
 Route::post('/password/reset', [ForgotPasswordController::class, 'reset']);
 
 Route::get('/products/search', [ProductSearchController::class, 'search']);
+
+Route::get('/test', function () {
+    return response()->json(['ok' => true]);
+});
+
